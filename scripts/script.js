@@ -6,14 +6,15 @@ const blocks = body.querySelectorAll('.block');
 const numbers = body.querySelectorAll('.block-number');
 const btnReset = document.querySelector('.btn-reset');
 
-// Вешаем обработчик клика
-body.addEventListener('click', (e) => {
+
+// Функция перемешивания чисел
+const moveItems = (targetItem) => {
 
     // Получаем блок с классом стрелки
-    let arrow = e.target.closest('.arrow');
+    let arrow = targetItem.closest('.arrow');
 
     // Получаем блок ячейки
-    let block = e.target.closest('.block');
+    let block = targetItem.closest('.block');
 
     // Создаем переменную для хранения индекса элемента
     let index = 0;
@@ -69,6 +70,12 @@ body.addEventListener('click', (e) => {
             }
         }
     }
+}
+
+// Вешаем обработчик клика
+body.addEventListener('click', (e) => {
+
+    moveItems(e.target);
 })
 
 // Сброс
